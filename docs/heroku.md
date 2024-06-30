@@ -9,3 +9,4 @@ heroku ps:scale web=1 --app <your-app-name>
 
 heroku run python manage.py migrate --app <app name>
 heroku open --app <app name>
+heroku logs --tail --app <app name>
