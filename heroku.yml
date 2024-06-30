@@ -3,4 +3,4 @@ build:
     web: Dockerfile
 
 run:
-  web: python manage.py runserver 0.0.0.0:8001
+  web: gunicorn your_api.wsgi:application --bind 0.0.0.0:8001

@@ -1,4 +1,5 @@
 # Use an official Python runtime as a parent image
+# Use an official Python runtime as a parent image
 FROM python:3.10
 
 # Set environment variables
@@ -8,7 +9,6 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /code
 
-
 # Install Python dependencies
 COPY requirements.txt /code/
 RUN pip install --upgrade pip \
@@ -17,8 +17,8 @@ RUN pip install --upgrade pip \
 # Copy the rest of the application code
 COPY . /code/
 
-# Expose the port on which Django runs (adjust as needed)
-EXPOSE 8000
+# Expose the port on which Gunicorn will run
+EXPOSE 80
 
-# Run the Django application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "api.wsgi:application"]
