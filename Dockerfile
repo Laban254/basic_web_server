@@ -21,4 +21,4 @@ COPY . /code/
 EXPOSE 80
 
 # Run Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "api.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "basic_web_server.wsgi:application"]
