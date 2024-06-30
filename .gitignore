@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media
+
+# If you are using SQLite, you can ignore the database file
+*.sqlite3
+
+
+# Environments
+envbasic
