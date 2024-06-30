@@ -18,7 +18,8 @@ RUN pip install --upgrade pip \
 COPY . /code/
 
 # Expose the port on which Gunicorn will run
-EXPOSE 80
+EXPOSE $PORT
 
 # Run Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "basic_web_server.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "basic_web_server.wsgi:application"]
+

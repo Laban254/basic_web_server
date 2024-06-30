@@ -3,4 +3,4 @@ build:
     web: Dockerfile
 
 run:
-  web: gunicorn basic_web_server.wsgi:application --bind 0.0.0.0:8001
+  web: gunicorn basic_web_server.wsgi:application --bind 0.0.0.0:$PORT
