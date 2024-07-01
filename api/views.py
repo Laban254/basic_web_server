@@ -9,9 +9,18 @@ API_KEY = "50e65509ac624eff827200502243006"
 class HelloView(View):
     def get(self, request):
         visitor_name = request.GET.get('visitor_name', 'Guest')
-        client_ip = request.META.get('REMOTE_ADDR')
+
+        # Get the client's IP address, handling the case for X-Forwarded-For
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            # The header could contain multiple IP addresses, take the first one
+            client_ip = x_forwarded_for.split(',')[0].strip()
+        else:
+            # Fallback to REMOTE_ADDR if no X-Forwarded-For header is present
+            client_ip = request.META.get('REMOTE_ADDR')
 
         logging.info(f"Client IP: {client_ip}")
+        print(client_ip)
 
         response_data = {
             'client_ip': client_ip,
