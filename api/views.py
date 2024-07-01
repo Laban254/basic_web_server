@@ -3,8 +3,13 @@ import requests
 import logging
 from django.views import View
 from django.http import JsonResponse
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 API_KEY = "50e65509ac624eff827200502243006"
+API_KEY = os.getenv('API_KEY')
 
 class HelloView(View):
     def get(self, request):
