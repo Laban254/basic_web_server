@@ -11,6 +11,10 @@ load_dotenv()
 API_KEY = "50e65509ac624eff827200502243006"
 API_KEY = os.getenv('API_KEY')
 
+def welcome(request):
+    message = "Welcome to our API!"
+    return JsonResponse({'message': message})
+
 class HelloView(View):
     def get(self, request):
         visitor_name = request.GET.get('visitor_name', 'Guest')
